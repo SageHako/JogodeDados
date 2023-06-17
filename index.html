@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <p>Olá MUNDO</p>
+    <h1>Dados da sorte</h1>
+    <main>
+        <h2>Jogador</h2>
+        <div class="dados-field">
+            <div class="dados"></div>
+            <div class="dados"></div>
+            <div class="dados"></div>
+            <div class="dados">
+                <input type="text" placeholder="Soma dos dados" id="soma-jogador">
+                <p id="soma-vc"></p>
+            </div>
+        </div>
+
+        <h2>Computador</h2>
+        <div class="dados-field">
+            <div class="dados"></div>
+            <div class="dados"></div>
+            <div class="dados"></div>
+            <div class="dados">
+                <input type="text" placeholder="Soma dos dados" id="soma-computador">
+                <p id="soma-pc"></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
