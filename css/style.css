@@ -10,8 +10,29 @@ body{
     height: 100vh;
 }
 
+#titulo{
+
+}
 main{
     display: flex;
     justify-content: center;
+    align-items: center;    
+    flex-direction: column;
+}
+
+.dados-field{
+    display: flex;
+    justify-content: center;
     align-items: center;
+    width: 50%;
+    height: 200px;
+    background-color: rgb(187, 184, 184);
+}
+
+.dados{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(218, 119, 119);
+    margin: 10px;
+    border-radius: 4px;
 }
