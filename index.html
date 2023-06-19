@@ -7,16 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Dados da sorte</h1>
+    <h1 id="titulo">Dados da sorte</h1>
+    <div class="sorteio-field">
+        <h4>Clique em sorteio para  jogar</h4>
+        <button>Sortear</button>
+    </div>
     <main>
-        <h2 id="titulo">Jogador</h2>
+        <h2>Jogador</h2>
         <div class="dados-field">
             <div class="dados"></div>
             <div class="dados"></div>
             <div class="dados"></div>
-            <div class="dados">
-                <input type="text" placeholder="Soma dos dados" id="soma-jogador">
-                <p id="soma-vc"></p>
+            <div class="dados-result">
+                <h3>Soma dos Dados :</h3>
+                <h3 id="somaJogador"></h3>
             </div>
         </div>
 
@@ -25,13 +29,13 @@
             <div class="dados"></div>
             <div class="dados"></div>
             <div class="dados"></div>
-            <div class="dados">
-                <input type="text" placeholder="Soma dos dados" id="soma-computador">
-                <p id="soma-pc"></p>
+            <div class="dados-result">
+                <h3>Soma dos Dados :</h3>
+                <h3 id="somaIa"></h3>
             </div>
         </div>
     </main>
 
-    <script src="scripts.js"></script>
+    <script src="script/scripts.js"></script>
 </body>
 </html>
