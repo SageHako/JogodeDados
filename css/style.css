@@ -68,6 +68,11 @@ button:hover{
     border-radius: 4px;
 }
 
+.lado{
+    width: 100%;
+    height: 100%;
+}
+
 .dados-result{
     display: flex;
     justify-content: center;
