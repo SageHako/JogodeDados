@@ -2,90 +2,119 @@
 const jogadorDado = document.querySelector('#somaJogador')
 const iaDado = document.querySelector('#somaIa')
 const btSorteio = document.querySelector('button')
+const dadosJogador = document.querySelector('#dados-jogador')
+const dadosComputador = document.querySelector('#dados-computador')
+const resulJogador = document.querySelector('#result-jogador')
+const resulComputador = document.querySelector('#result-computador')
+const vencedorJ = document.querySelector('#jogador-status')
+const vencedorC = document.querySelector('#computador-status')
 
-img1 = document.querySelector('#dadoj1')
-img2 = document.querySelector('#dadoj2')
-img3 = document.querySelector('#dadoj3')
-
-
-const lado = [
-    {
-        dado:{
-        url: '/imagen/um.png',
-        lados: 1
+const listaDados = [
+        {
+            lado: 1,
+            url: '/imagen/um.png'
+        },
+        {
+            lado: 2,
+            url: '/imagen/dois.png'
+        },
+        {
+            lado: 3,
+            url: '/imagen/tres.png'
+        },
+        {
+            lado: 4,
+            url: '/imagen/quatro.png'
+        },
+        {
+            lado: 5,
+            url: '/imagen/cinco.png'
+        },
+        {
+            lado: 6,
+            url: '/imagen/seis.png'
         }
-    },
-    {
-        dado:{
-        url: '/imagen/dois.png',
-        lados: 2
-        }
-    },
-    {
-        dado:{
-            url: '/imagen/tres.png',
-            lados: 3
-        }
-    },
-    {
-        dado:{
-            url: '/imagen/quatro.png',
-            lados: 4
-        }
-    },
-    {
-        dado:{
-            url: '/imagen/cinco.png',
-            lados: 5
-        }
-    },
-    {
-        dado:{
-            url: '/imagen/seis.png',
-            lados: 6
-        }
-    }
 ]
 
 btSorteio.addEventListener('click', roletarDados)
-const listaJogador = []
-const listaComputador = []
 
 function roletarDados(){
-    let sorteio = []
+    const sorteioJogador = []
+    const sorteioComputador = []
     let numsorteio = 0
-    let jogadorSoma = 0
-    let IaSoma = 0
 
     for(let i=0; i<3; i ++){   
-        numsorteio = Math.floor(Math.random()*6) + 1
-        sorteio.push(numsorteio)
-        jogadorSoma += numsorteio
-        //console.log(sorteio)
-
-        IaSoma += Math.floor(Math.random()*6) + 1
+        sorteioJogador.push(Math.floor(Math.random()*6) + 1)   
+        sorteioComputador.push(Math.floor(Math.random()*6) + 1)   
     }
+
+    vencedorSoma(sorteioJogador, sorteioComputador)
+    mostrarDadoTela(sorteioJogador, sorteioComputador)
+}
+
+function mostrarDadoTela(sorteioJogador, sorteioComputador){
+    dadosJogador.innerHTML = ''
+    dadosComputador.innerHTML = ''
+
+    for(let i=0; i< sorteioJogador.length; i++){
+        let numj = sorteioJogador[i]
+
+        let dado = listaDados.find(item => item.lado === numj)
+
+        if(dado){
+            let img = document.createElement('img')
+            img.setAttribute('class', 'lado-img')
+            img.src = `${dado.url}`
+            dadosJogador.append(img)
+        }     
+    }  
+
+    for(let i=0; i< sorteioComputador.length; i++){
+        let numc = sorteioComputador[i]
+
+        let dado = listaDados.find(item => item.lado === numc)
+
+        if(dado){
+            let img = document.createElement('img')
+            img.setAttribute('class', 'lado-img')
+            img.src = `${dado.url}`
+            dadosComputador.append(img)
+        }     
+    }
+}
+
+function vencedorSoma(sorteioJogador, sorteioComputador){
+    let jogadorSoma = sorteioJogador.reduce((item, value) =>{
+        return item + value
+    })
+
+    let IaSoma = sorteioComputador.reduce((item, value) =>{
+        return item+value
+    })
+
     vencedor(jogadorSoma, IaSoma)
-    mostrarNaTela(sorteio)
 }
 
-function mostrarNaTela(sorteio){
-        lado.filter(item =>{
-            if(4 == item.dado.lados){
-                console.log(sorteio)
-            }
-        })   
-}
-
-function vencedor(jogadorSoma, IaSoma){
+function vencedor(jogadorSoma, IaSoma){   
+    
     if(jogadorSoma > IaSoma){
         jogadorDado.textContent = `${jogadorSoma}`
         iaDado.textContent = `${IaSoma}`
+        vencedorJ.textContent = 'Venceu!'
+        vencedorC.textContent = ''
     }else
     if(jogadorSoma == IaSoma){
-        console.log(`${jogadorSoma} EMPATE ${IaSoma}`)
+        jogadorDado.textContent = `${jogadorSoma}`
+        iaDado.textContent = `${IaSoma}`
+
+        vencedorJ.textContent = 'Empate!'
+        vencedorC.textContent = 'Empate'
+
     }else{
         jogadorDado.textContent = `${jogadorSoma}`
         iaDado.textContent = `${IaSoma}`
+
+        vencedorJ.textContent = ''
+        vencedorC.textContent = 'Venceu'
     }
 }

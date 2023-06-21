@@ -61,26 +61,34 @@ button:hover{
 }
 
 .dados{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100px;
     height: 100px;
     background-color: rgb(146, 53, 53);
-    margin: 10px;
     border-radius: 4px;
+    width: 60%;
 }
 
-.lado{
-    width: 100%;
-    height: 100%;
+.lado-img{
+    width: 80px;
+    height: 80px;
+    margin: 20px;
 }
 
 .dados-result{
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
     background-color: white;
     margin-left: 50px;
+    border: 1px solid black;
     border-radius: 8px;
     width: 25%;
     height: 60%;
+}
+
+.dados-result h4{
+    margin-top: 10px;
 }
